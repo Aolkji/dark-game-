@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survivor Arena</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  // Main Menu 
+  <div id  = "mainMenu" class = "main-menu"> 
+    <h1 class = "menu-title"> Survivor Arena</h1>
+    <p class = "menu-subtitle"> Survive. Upgrade. Conquer</p>
+
+    <div id = "menuGreeting" class ="menu-greeting"></div>
+    <div id  = "menuButtons" class = "menu-buttons">
+      <button id = "startGameBtn" class = "menu-btn">Start Game</button>
+      <button id = "showLoginBtn" class = "menu-btn-second">Enter Name</button>
+    </div>
+
+    <div id="nameForm" class=" name-form">
+      <input type ="text" id = "nameInput" class="name-input" placeholder="Enter your name.." maxlength="20">
+      <div class = "form-row">
+        <button id ="saveNameBtn" class= "menu-btn">Save</button>
+        <button id = "cancelNameBtn" class = "menu-btn second">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div id  = "gameWrapper" class="game-shell">
+    <header class="top-bar">
+      <div>
+        <h1>Survivor Arena</h1>
+        <p class="subtitle">Move around the map, defeat enemies, collect coins, and upgrade.</p>
+        <p class = "player-name">Playing as:<span id="playerNameDisplay">Guest</span></p>
+      </div>
+
+      <div class="hud-grid">
+        <div class="hud-card">
+          <span class="label">Health</span>
+          <span id="healthStat">100 / 100</span>
+        </div>
+        <div class="hud-card">
+          <span class="label">Coins</span>
+          <span id="coinStat">0</span>
+        </div>
+        <div class="hud-card">
+          <span class="label">Round</span>
+          <span id="roundStat">1</span>
+        </div>
+        <div class="hud-card">
+          <span class="label">Kills</span>
+          <span id="killStat">0</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-layout">
+      <aside class="left-panel panel">
+        <h2>Controls</h2>
+        <ul>
+          <li>W A S D or Arrow Keys to move</li>
+          <li>Auto-shoots nearest enemy</li>
+          <li>Walk over coins to collect them</li>
+          <li>Press P to pause</li>
+        </ul>
+
+        <h2>Player Stats</h2>
+        <div class="stat-list">
+          <div class="stat-row"><span>Attack</span><strong id="attackStat">12</strong></div>
+          <div class="stat-row"><span>Speed</span><strong id="speedStat">3.5</strong></div>
+          <div class="stat-row"><span>Crit Rate</span><strong id="critRateStat">10%</strong></div>
+          <div class="stat-row"><span>Crit Damage</span><strong id="critDamageStat">175%</strong></div>
+        </div>
+      </aside>
+
+      <section class="center-panel panel">
+        <canvas id="gameCanvas" width="920" height="560"></canvas>
+
+        <div id="messageOverlay" class="message-overlay hidden">
+          <div class="message-card">
+            <h2 id="messageTitle">Round Complete</h2>
+            <p id="messageText">Buy upgrades, then continue.</p>
+            <button id="resumeBtn" class="primary-btn">Start Next Round</button>
+          </div>
+        </div>
+
+        <div id="gameOverOverlay" class="message-overlay hidden">
+          <div class="message-card">
+            <h2>Game Over</h2>
+            <p id="finalSummary">You survived 0 rounds.</p>
+            <button id="restartBtn" class="primary-btn">Restart Game</button>
+            <button id = "backToMenuBtn" class = "primary-btn">Main Menu</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-panel panel">
+        <h2>Market</h2>
+        <p class="shop-note">Use coins to improve your stats.</p>
+
+        <div class="shop-list">
+          <button class="shop-btn" data-upgrade="health">
+            <span>+ Max Health</span>
+            <strong id="healthCost">20 coins</strong>
+          </button>
+
+          <button class="shop-btn" data-upgrade="attack">
+            <span>+ Attack</span>
+            <strong id="attackCost">25 coins</strong>
+          </button>
+
+          <button class="shop-btn" data-upgrade="speed">
+            <span>+ Speed</span>
+            <strong id="speedCost">30 coins</strong>
+          </button>
+
+          <button class="shop-btn" data-upgrade="critRate">
+            <span>+ Crit Rate</span>
+            <strong id="critRateCost">35 coins</strong>
+          </button>
+
+          <button class="shop-btn" data-upgrade="critDamage">
+            <span>+ Crit Damage</span>
+            <strong id="critDamageCost">40 coins</strong>
+          </button>
+        </div>
+
+        <div class="enemy-box">
+          <h2>Enemy Scaling</h2>
+          <div class="stat-row"><span>Enemy Health</span><strong id="enemyHealthInfo">30</strong></div>
+          <div class="stat-row"><span>Enemy Attack</span><strong id="enemyAttackInfo">6</strong></div>
+          <div class="stat-row"><span>Enemy Speed</span><strong id="enemySpeedInfo">1.3</strong></div>
+        </div>
+      </aside>
+
+
+    </main>
+
+  </div>
+  
+  <p>
+  <div class = "tasks-title"><h3>Tasks</h3></div>
+  </p>
+  <div id = "tasks"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
